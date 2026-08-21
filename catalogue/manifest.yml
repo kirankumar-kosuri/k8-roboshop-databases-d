@@ -57,14 +57,14 @@ spec:
 
           livenessProbe:
             httpGet:
-              path: /healthz
+              path: /health
               port: liveness-port
             failureThreshold: 1
             periodSeconds: 10
 
           readinessProbe:
             httpGet:
-              path: /healthz
+              path: /health
               port: liveness-port
             failureThreshold: 1
             periodSeconds: 10
