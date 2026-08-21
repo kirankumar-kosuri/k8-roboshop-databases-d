@@ -23,13 +23,13 @@ spec:
       project: roboshop
       environment: dev
       component: catalogue
-    template:
-      metadata:
-        labels:
+  template:
+    metadata:
+      labels:
           project: roboshop
           environment: dev
           component: catalogue
-      spec:
+    spec:
         containers:
         - name: catalogue
           image: kirankumarkosuri/catalogue:v1
