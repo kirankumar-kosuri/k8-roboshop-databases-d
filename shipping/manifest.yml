@@ -36,10 +36,10 @@ spec:
         resources:
           requests:
             memory: "120Mi"
-            cpu: "200m"
+            cpu: "300m"
           limits:
             memory: "120Mi"
-            cpu: "200m"
+            cpu: "300m"
         imagePullPolicy: Always
         envFrom:
         - configMapRef:
