@@ -28,7 +28,7 @@ spec:
     metadata:
       labels:
         project: roboshop
-        component: catauserlogue
+        component: user
         environment: dev
     spec:
       containers:
