@@ -41,7 +41,7 @@ spec:
       environment: dev
       component: mongodb
   serviceName: "mongodb-headless"
-  replicas: 3 # by default is 1
+  replicas: 2 # by default is 1
   template:
     metadata:
       labels:
