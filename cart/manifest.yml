@@ -6,44 +6,34 @@ metadata:
 data:
   MONGO: "true"
   REDIS_URL: "redis://redis:6379"
-  MONGO_URL: "mongodb://mongodb:27017/users"
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: user
-  namespace: roboshop
-data:
-  MONGO: "true"
-  REDIS_URL: "redis://redis:6379"
   MONGO_URL: "mongodb://redis:27017/users"
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user
+  name: cart
   namespace: roboshop
   labels:
     project: roboshop
-    component: user
+    component: cart
     environment: dev
 spec:
   replicas: 1
   selector:
     matchLabels:
       project: roboshop
-      component: user
+      component: cart
       environment: dev
   template:
     metadata:
       labels:
         project: roboshop
-        component: user
+        component: cart
         environment: dev
     spec:
       containers:
-      - name: user
-        image: kirankumarkosuri/user:v1
+      - name: cart
+        image: kirankumarkosuri/cart:v1
         resources:
           requests:
             memory: "120Mi"
@@ -54,7 +44,7 @@ spec:
         imagePullPolicy: Always
         envFrom:
         - configMapRef:
-            name: user
+            name: cart
         ports:
         - name: liveness-port
           containerPort: 8080
@@ -74,12 +64,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: user
+  name: cart
   namespace: roboshop
 spec:
   selector:
     project: roboshop
-    component: user
+    component: cart
     environment: dev
   ports:
   - protocol: TCP
@@ -89,11 +79,11 @@ spec:
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: user
+  name: cart
   namespace: roboshop
   labels:
     project: roboshop
-    component: user
+    component: cart
     environment: dev
 spec:
   scaleTargetRef:
