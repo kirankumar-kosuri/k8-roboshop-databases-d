@@ -1,4 +1,3 @@
-# Normal Service,Headless-Service,StatefullSet,pv
 apiVersion: v1
 kind: Service
 metadata:
@@ -34,6 +33,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mongodb
+  namespace: roboshop
 spec:
   selector:
     matchLabels:
@@ -41,7 +41,7 @@ spec:
       environment: dev
       component: mongodb
   serviceName: "mongodb-headless"
-  replicas: 2 # by default is 1
+  replicas: 3 # by default is 1
   template:
     metadata:
       labels:
