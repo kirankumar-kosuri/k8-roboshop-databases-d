@@ -4,7 +4,6 @@ metadata:
   name: rabbitmq
   namespace: roboshop
 data:
-  env:
     - name: RABBITMQ_DEFAULT_USER
       value: roboshop
     - name: RABBITMQ_DEFAULT_PASS
